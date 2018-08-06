@@ -32,13 +32,22 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //DB Config
-const db = require("./config/keys").mLabURI;
+// const db = require("./config/keys").mLabURI;
 
 //Connect to Mongo
+// mongoose
+//   .connect(db)
+//   .then(() => console.log("mongodb connected"))
+//   .catch(err => console.log(err));
+
 mongoose
-  .connect(db)
+  .connect('mongodb://localhost/nodedb')
   .then(() => console.log("mongodb connected"))
   .catch(err => console.log(err));
+
+// let db = mongoose.connection;
+// db.on('error', (err) => console.log(err))
+// db.once('open', () => console.log('Connecter to mongo db'))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

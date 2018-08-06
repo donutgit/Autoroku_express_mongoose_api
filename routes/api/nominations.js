@@ -17,6 +17,7 @@ router.get("/", (req, res) => {
 // @desc   Create a item
 // @access Public
 router.post("/", (req, res) => {
+  console.log(req);
   const newItem = new Nomination({
     nomination: req.body.nomination
   });
