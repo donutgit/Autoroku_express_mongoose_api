@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title} KappaPride
+  a(href="./api/cars") API CARS
+  br
+  a(href="./api/nominations") NOMINATIONS 
+  br
+  a(href="./api/votes") VOTES 
+  br
+  br
+  a(href="./users") USERS
+  br
+  br
+  form(
+      ref='uploadForm' 
+      id='uploadForm' 
+      action='http://localhost:3001/upload' 
+      method='post' 
+      encType="multipart/form-data"
+  )
+    input( type="file" name="sampleFile")
+    input( type='submit' value='Upload!')
