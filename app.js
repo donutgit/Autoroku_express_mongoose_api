@@ -31,19 +31,19 @@ app.use(bodyParser.json());
 // app.use(busboyBodyParser());
 app.use(cors());
 
-//DB Config
-// const db = require("./config/keys").mLabURI;
+// DB Config
+const db = require("./config/keys").mLabURI;
 
-//Connect to Mongo
-// mongoose
-//   .connect(db)
-//   .then(() => console.log("mongodb connected"))
-//   .catch(err => console.log(err));
-
+// Connect to Mongo
 mongoose
-  .connect('mongodb://localhost/nodedb')
+  .connect(db)
   .then(() => console.log("mongodb connected"))
   .catch(err => console.log(err));
+
+// mongoose
+//   .connect('mongodb://localhost/nodedb')
+//   .then(() => console.log("mongodb connected"))
+//   .catch(err => console.log(err));
 
 // let db = mongoose.connection;
 // db.on('error', (err) => console.log(err))
