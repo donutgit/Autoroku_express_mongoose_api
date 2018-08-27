@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        .col
+          h1 #{title}
+          ul.list-group(id='nomination-list')
+            each nomination, i in nominations
+              li.list-group-item.list-button
+                strong= nomination.nomination
+                button.btn.btn-danger(type='button' id='deleteNomination' data-id= nomination._id) Delete
+            li.list-group-item.list-group-item-action.list-group-item-dark.list-button
+              form(
+                  ref='nominationForm' 
+                  id='nominationForm' 
+                  class='form'
+                  action='/api/nominations' 
+                  method='post'
+              )
+                .form-group
+                  label(for='exampleInputNomination') Add new nomination
+                  input#exampleInputNomination.form-control(type='text', name="nomination" placeholder='Enter nomination')
+                button.btn.btn-primary(type='submit') Add new
+

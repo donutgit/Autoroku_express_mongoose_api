@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const NominationSchema = new Schema({
   nomination: {
     type: String,
+    index: { unique: true },
     required: true
   }
 });

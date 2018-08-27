@@ -9,9 +9,15 @@ const CarSchema = new Schema({
   },
   model: {
     type: String,
+    index: { unique: true },
     required: true
   },
   nominations: [String],
+  imageUrl: {
+    type: String,
+    default:
+      "https://res.cloudinary.com/dxfogjj18/image/upload/v1534421906/pkp1db9osg2qgqcoe0a6.png"
+  },
   premium: {
     type: Boolean,
     default: false

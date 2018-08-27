@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    .container
+      .row
+        .col.align-self-center
+          form(
+              ref='addCarForm' 
+              id='addCarForm' 
+              action='/api/cars' 
+              method='post'
+          )
+            h1 #{title}
+            .form-group
+              label(for='mark') Mark
+              input#mark.form-control(type='text', name="mark" placeholder='Mark')
+            .form-group
+              label(for='model') Model
+              input#model.form-control(type='text', name="model" placeholder='Model')
+            .form-group
+              label.mr-sm-2(for='inlineFormCustomSelect') Nomination
+              select#inlineFormCustomSelect.custom-select.mr-sm-2
+                option(selected='') Choose...
+                option(value='1') Comfort
+                option(value='2') Buisness
+                option(value='3') Sport
+                option(value='4') Lux
+            .form-check
+              input#exampleCheck1.form-check-input(type='checkbox')
+              label.form-check-label(for='exampleCheck1') Premium
+            button.btn.btn-primary.disabled(disabled type='submit', style="margin-top: 20px") Add new car
+

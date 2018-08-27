@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        .col
+          h1 #{title}
+          ul.list-group(id='votes-list')
+            each vote, i in votes
+              li.list-group-item.list-button 
+                strong #{vote.name} #{vote.surname}
+                button.btn.btn-danger(type='button' id='deleteVote' data-id= vote._id) Delete
+

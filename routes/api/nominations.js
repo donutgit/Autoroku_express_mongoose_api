@@ -1,37 +1,45 @@
 const express = require("express");
 const router = express.Router();
+// const jwt = require("express-jwt");
+// const secret = require("../../config/database").jwtSecret;
+// model
+// const Nomination = require("../../models/Nomination");
 
-//item model
-const Nomination = require("../../models/Nomination");
-
-// @route GET api/items
-// @desc Get all items
+// @route GET api/nominations
+// @desc render nominations view
 // @access Public
 router.get("/", (req, res) => {
-  Nomination.find()
-    .sort({ nomination: "asc" })
+  require("../../models/Nomination")
+    .find()
+    .sort({ date: -1 })
     .then(nominations => res.json(nominations));
 });
 
 // @route  POST api/items
-// @desc   Create a item
+// @desc   add nomination
 // @access Public
 router.post("/", (req, res) => {
-  console.log(req);
+  // console.log(req.body);
   const newItem = new Nomination({
     nomination: req.body.nomination
   });
 
-  newItem.save().then(nom => res.json(nom));
+  newItem.save().then(nom => res.send({ success: true }));
+  res.send({ success: true });
 });
 
-// @route  DELETE api/items/:id
+// @route  DELETE api/nominations/:id
 // @desc   Delete a item
 // @access Public
 router.delete("/:id", (req, res) => {
+  console.log(req.body);
   Nomination.findById(req.params.id)
-    .then(nom => nom.remove().then(() => res.json({ success: true })))
-    .catch(err => res.status(404).json({ success: false }));
+    .then(nom =>
+      nom.remove().then(() => {
+        res.send({ success: true });
+      })
+    )
+    .catch(err => console.log(err));
 });
 
 // @route  UPDATE api/items/:id
@@ -50,23 +58,5 @@ router.put("/:id", (req, res) => {
     });
   });
 });
-
-// router.put('/:id', (req, res) => {
-//   const modelId = req.params.id;
-//   const newNom = req.body.nomination;
-
-//   Nomination.findById(modelId).then((model) => {
-//       return Object.assign(model, {nomination: newNom});
-//   }).then((model) => {
-//       return model.save();
-//   }).then((updatedModel) => {
-//       res.json({
-//           msg: 'model updated',
-//           updatedModel
-//       });
-//   }).catch((err) => {
-//       res.send(err);
-//   });
-// });
 
 module.exports = router;

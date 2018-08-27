@@ -15,9 +15,9 @@ router.post("/", function(req, res) {
   // console.log(req);
   var form = new formidable.IncomingForm();
   form.parse(req, function(err, fields, files) {
-    console.log(files.image.path)
+    console.log(files.image.path);
     cloudinary.uploader.upload(files.image.path, function(result) {
-      res.send("id " + result.public_id);
+      res.send(result);
     });
   });
 });

@@ -7,27 +7,19 @@ const VoteSchema = new Schema({
     type: String,
     required: true
   },
-  surname: {
-    type: String,
-    required: true
-  },
   email: {
     type: String,
-    required: true
+    required: true,
+    index: { unique: true }
   },
   phone: {
     type: Number,
-    required: true
+    required: true,
+    index: { unique: true }
   },
   voteResult: {
-    SmallClass: { type: String, default: "BMW" },
-    Economy: { type: String, default: "BMW" }
-    // Compact: { type: String, default: "BMW" },
-    // Buisness: { type: String, default: "BMW" },
-    // Lux: { type: String, default: "BMW" },
-    // CoupeSport: { type: String, default: "BMW" },
-    // ElectricHybrid: { type: String, default: "BMW" },
-    // Crossover: { type: String, default: "BMW" }
+    type: Object,
+    required: true
   },
   date: {
     type: Date,

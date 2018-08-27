@@ -1,8 +1,53 @@
-body {
+/* body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+} */
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+.registerPage,
+.loginPage {
+  background-image: url(http://res.cloudinary.com/dxfogjj18/image/upload/v1533634844/aa1cgil7kutinkvvnuji.png);
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.list-button {
+  display: flex;
+  align-items: center;
+}
+.list-button strong {
+  flex: 1
+}
+.list-button button {
+  margin-left: 20px;
+}
+#registerForm,
+#loginForm {
+  position: relative;
+  margin: auto;
+  padding: 20px;
+  background: #24284f;
+  -webkit-box-shadow: 0 0 60px rgba(0, 0, 0, 0.51);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.51);
+  background-repeat: no-repeat;
+  width: 50%;
+  min-width: 300px;
+  max-width: 400px;
+  min-height: 300px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #fff;
 }

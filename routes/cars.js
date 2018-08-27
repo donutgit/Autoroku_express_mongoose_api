@@ -2,22 +2,29 @@ const express = require("express");
 const router = express.Router();
 
 //item model
-const Car = require("../../models/Car");
+const Car = require("../models/Car");
 
 // @route GET cars
 // @desc Get all cars
 // @access Public
 router.get("/", (req, res) => {
-  Car.find()
-    .sort({ date: -1 })
-    .then(cars => res.json(cars));
+  Car.find({}, (err, cars) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("cars", {
+        title: "Cars",
+        cars: cars
+      });
+    }
+  });
 });
 // @route GET api/car
 // @desc Get all car
 // @access Public
-router.get("/:id", (req, res) => {
-  Car.findById(req.params.id).then(car => res.json(car));
-});
+// router.get("/api", (req, res) => {
+//   Car.find()
+// });
 // @route GET api/cars/add
 // @desc add new car
 // @access Public
@@ -43,7 +50,11 @@ router.get("/:id", (req, res) => {
 // @access Public
 router.post("/", (req, res) => {
   const newItem = new Car({
-    ...req.body
+    mark: req.body.mark,
+    model: req.body.model,
+    nominations: req.body.nominations,
+    premium: req.body.premium,
+    votes: req.body.votes
   });
 
   newItem.save().then(car => res.json(car));

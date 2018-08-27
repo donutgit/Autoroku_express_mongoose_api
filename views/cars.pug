@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    .container-fluid
+      .row
+        .col
+          h1 #{title}
+          ul.list-group(id='nomination-list')
+            each car, i in cars
+              li.list-group-item.list-button
+                strong= car.mark + " " + car.model
+                a.btn.btn-primary(role='button' id='editCar' href=`/api/cars/${car._id}`) Edit
+                button.btn.btn-danger(type='button' id='deleteCar' data-id= car._id) Delete
+            li.list-group-item.list-group-item-action.list-group-item-dark.list-button
+              a.btn.btn-primary(role='button' href="/api/cars/add") Add new car
+
