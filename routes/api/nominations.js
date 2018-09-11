@@ -3,7 +3,7 @@ const router = express.Router();
 // const jwt = require("express-jwt");
 // const secret = require("../../config/database").jwtSecret;
 // model
-// const Nomination = require("../../models/Nomination");
+const Nomination = require("../../models/Nomination");
 
 // @route GET api/nominations
 // @desc render nominations view
@@ -19,13 +19,13 @@ router.get("/", (req, res) => {
 // @desc   add nomination
 // @access Public
 router.post("/", (req, res) => {
-  // console.log(req.body);
+  console.log(req.body.name);
   const newItem = new Nomination({
-    nomination: req.body.nomination
+    name: req.body.name
   });
 
   newItem.save().then(nom => res.send({ success: true }));
-  res.send({ success: true });
+  // res.send({ success: true });
 });
 
 // @route  DELETE api/nominations/:id
